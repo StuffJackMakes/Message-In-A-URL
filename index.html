@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!-- See <TODO: ADD GITHUB URL> for implementation details -->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Create messages within a URL">
+        <meta name="keywords" content="url, shortener, lengthener, message, obfuscation">
+        <meta name=author content="Jack Sivak">
+        <meta name=viewport content="width=device-width">
+
+        <!-- Before loading anything else, check to see if the URL is a redirect -->
+        <script>
+            // If there is a 'search' part of the path, a '?' character, and a '_' character, it's a redirect
+            if (window.location.search.indexOf("?") !== -1 && window.location.search.indexOf("_") !== -1) {
+                let redirectDestination = window.atob(window.location.search.substring(
+                        window.location.search.lastIndexOf("_") + 1));
+                window.location.replace(redirectDestination);
+            }
+        </script>
+
+        <title>Message In A URL</title>
+        <link rel="icon" type="image/png" href="favicon.png">
+        <style>
+            html {
+                background-color: #c7c7ff;
+                color: #000;
+                line-height: 1.4;
+                font-family: sans-serif;
+            }
+
+            body {
+                margin: 0;
+            }
+
+            main {
+                max-width: 35em;
+                padding: 2em;
+                background-color: #fff;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            img {
+                height: 128px;
+            }
+
+            textarea {
+                display: block;
+                box-sizing: border-box;
+                width: 100%;
+                font-size: 15px;
+                margin-bottom: 1em;
+                padding: 0.5em;
+                border-radius: 10px;
+                height: 5em;
+                resize: vertical;
+                min-height: 2.5em;
+            }
+
+            button {
+                background-color: #92f071;
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 0.25em;
+                padding: 0.25em;
+                border-radius: 0.5em;
+            }
+
+            a {
+                font-weight: bolder;
+                color: #000;
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: #0270c9;
+            }
+
+            footer {
+                max-width: 35em;
+                padding: 1em;
+                background-color: #c7c7ff;
+                margin: 0 auto;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <img src="message_in_a_url_logo.svg" alt="Message In A URL" title="Message In A URL"/>
+            <h1 style="margin-bottom: 0px;">Message In A URL</h1>
+            <div style="margin-bottom: 24px;"><i>Make Your URLs <strong>Say</strong> Something</i></div>
+            <textarea id="message" maxlength="4096" placeholder="Your message here!"></textarea>
+            <textarea id="destinationURL" maxlength="4096" placeholder="Destination URL here!"></textarea>
+            <button onclick="GenerateButtonClicked()">⚡ Generate ⚡</button>
+            <textarea id="encodedURL" placeholder="Click 'Generate' and get that URL!"></textarea>
+        </main>
+        <footer>
+            Made by <a href="stuffjackmakes.com">Jack Sivak</a>. Check out the project on <a href="TODO: Github link">Github</a>
+        </footer>
+
+        <script type="text/javascript">
+            // Generates a URL with the provided message and destination
+            function GenerateEncodedURL(message, destinationURL) {
+                // Check if either argument is missing
+                if (!message) throw "Message is missing";
+                if (!destinationURL) throw "Destination URL is missing";
+
+                // URL Redirect doesn't work if there is no http/https
+                if (destinationURL.substring(0, 8) !== "https://" &&
+                    destinationURL.substring(0, 8) !== "http://") {
+                    destinationURL = "http://" + destinationURL;
+                }
+
+                let hostname = window.location.protocol + "//" + window.location.hostname + window.location.pathname;
+
+                // Trim whitespace and replace spaces with underscores in the message
+                let formattedMessage = message.trim().replace(new RegExp(" ", "g"), "_");
+
+                return hostname + "?" + formattedMessage + "_" + window.btoa(destinationURL.trim());
+            };
+
+            // Get the input from each textarea, get the encoded URL, and display it
+            function GenerateButtonClicked() {
+                let message = document.getElementById("message").value;
+                let destinationURL = document.getElementById("destinationURL").value;
+                console.log(message, destinationURL);
+                try {
+                    document.getElementById("encodedURL").value = GenerateEncodedURL(message, destinationURL);
+                } catch (error) {
+                    // Fail silently - this is only the case when one of the two inputs is missing
+                }
+            }
+        </script>
+    </body>
+</html>
