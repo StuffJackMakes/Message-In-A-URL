@@ -6,7 +6,7 @@
 
 `Message in a URL` allows users to encode text within a URL.
 
-More specifically, this repository contains a website that allows users to input a message and a destination URL, and get back a URL with the message encoded in it that redirects to the destination URL.
+This repository contains a website that allows users to input a message and a destination URL, and get back a URL with the message in it that also redirects to the destination URL.
 
 For example: [https://stuffjackmakes.com/miau/?Check_out_this_🔥_🦆_search_engine!_aHR0cHM6Ly9kdWNrZHVja2dvLmNvbS8=](https://stuffjackmakes.com/miau/?Check_out_this_🔥_🦆_search_engine!_aHR0cHM6Ly9kdWNrZHVja2dvLmNvbS8=)
 
@@ -17,6 +17,11 @@ links to
 <p align="center">
   <img width="512" height="512" src="./example_image.jpg">
 </p>
+
+
+## Live Example
+
+A live example of this website is hosted at [https://stuffjackmakes.com/miau/](https://stuffjackmakes.com/miau/).
 
 
 ## How it Works
