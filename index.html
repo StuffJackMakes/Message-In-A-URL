@@ -124,7 +124,6 @@
             function GenerateButtonClicked() {
                 let message = document.getElementById("message").value;
                 let destinationURL = document.getElementById("destinationURL").value;
-                console.log(message, destinationURL);
                 try {
                     document.getElementById("encodedURL").value = GenerateEncodedURL(message, destinationURL);
                 } catch (error) {
