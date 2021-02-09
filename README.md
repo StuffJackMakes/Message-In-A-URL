@@ -1,5 +1,5 @@
 <p align="center">
-  <img height="128" src="./message_in_a_url_logo.svg">
+  <img height="128" src="./public/message_in_a_url_logo.svg">
 </p>
 
 # Message In A URL
@@ -8,7 +8,7 @@
 
 This repository contains a website that allows users to input a message and a destination URL, and get back a URL with the message in it that also redirects to the destination URL.
 
-For example: [https://stuffjackmakes.com/miau/?Check_out_this_🔥_🦆_search_engine!_aHR0cHM6Ly9kdWNrZHVja2dvLmNvbS8=](https://stuffjackmakes.com/miau/?Check_out_this_🔥_🦆_search_engine!_aHR0cHM6Ly9kdWNrZHVja2dvLmNvbS8=)
+For example: [https://stuffjackmakes.com/message-in-a-url/?Check_out_this_🔥_🦆_search_engine!_aHR0cHM6Ly9kdWNrZHVja2dvLmNvbS8=](https://stuffjackmakes.com/message-in-a-url/?Check_out_this_🔥_🦆_search_engine!_aHR0cHM6Ly9kdWNrZHVja2dvLmNvbS8=)
 
 links to
 
@@ -21,7 +21,7 @@ links to
 
 ## Live Example
 
-A live example of this website is hosted at [https://stuffjackmakes.com/miau/](https://stuffjackmakes.com/miau/).
+A live example of this website is hosted at [https://stuffjackmakes.com/message-in-a-url/](https://stuffjackmakes.com/message-in-a-url/).
 
 
 ## How it Works
